@@ -103,7 +103,6 @@ const Index = () => {
             <div className="col-md-4 col-sm-12" key={i}>
               <div
                 className="listing-item listing-grid-one mb-45 wow fadeInUp"
-                dta-wow-delay="40ms"
               >
                 <div className="listing-thumbnail">
                   <img

@@ -125,7 +125,7 @@ const AddListing = () => {
                   </div>
                 </div>
                 <div className="add-listing-form details-listing-form mb-60 wow fadeInUp">
-                  <h4 className="title">Landlord's Details</h4>
+                  <h4 className="title">Landlord&apos;s Details</h4>
                   <div className="row">
 
                     <div className="col-lg-6">
