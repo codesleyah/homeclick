@@ -31,7 +31,7 @@ const Header2 = () => {
                   <nav className="main-menu">
                     <ul>
                       <li className="menu-item">
-                        <Link href="/index-2">
+                        <Link href="/">
                           <a>Home</a>
                         </Link>                      
                       </li>

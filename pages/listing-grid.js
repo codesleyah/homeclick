@@ -80,8 +80,8 @@ const ListingGrid = () => {
 
               <div className="listing-grid-wrapper">
                 <div className="row">
-                {listings.map((listing) => (  
-                  <div className="col-md-4 col-sm-12">
+                {listings.map((listing, i) => (  
+                  <div className="col-md-4 col-sm-12" key={i}>
                     <div
                       className="listing-item listing-grid-one mb-45 wow fadeInUp"
                       dta-wow-delay="40ms"
