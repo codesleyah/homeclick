@@ -2,8 +2,9 @@ import React,{useState} from "react";
 import PageBanner from "../src/components/PageBanner";
 import Layout from "../src/layouts/Layout";
 import { collection, addDoc, } from "firebase/firestore"
-import { fireStore } from "../src/firebase"
+import { fireStore , storage} from "../src/firebase"
 import { async } from "@firebase/util";
+import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 
 
 const AddListing = () => {
@@ -18,8 +19,40 @@ const AddListing = () => {
   const [owneremail, setOwneremail] = useState("")
   const [ownername, setOwnername] = useState("")
   const [ownersurname, setOwnersurname] = useState("")
+  const [images, setImages] = useState([])
 
-  const handleSubmit = (e) => {
+
+
+  const uploadImages = async (file) => {
+    if(!file){
+      alert("Please select an images")
+    }
+    console.log(file)
+    const storageRef = ref(storage, `images/${file.name}`)
+    const uploadTask = uploadBytesResumable(storageRef, file)
+
+    uploadTask.on('state_changed', (snapshot) => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case 'paused':
+          console.log('Upload is paused');
+          break;
+        case 'running':
+          console.log('Upload is running');
+          break;
+      }
+    }, (error) => {
+      alert(error.message)
+    }, () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        console.log('File available at', downloadURL);
+        setImages([...images, downloadURL])
+      });
+    });
+  }
+
+  const handleSubmit = () => {
     e.preventDefault()
     try{
       const property =  addDoc(collection(fireStore, "properties"), {
@@ -32,7 +65,8 @@ const AddListing = () => {
         ownerphone: ownerphone,
         owneremail: owneremail,
         ownername: ownername,
-        ownersurname: ownersurname
+        ownersurname: ownersurname,
+        images: images
       })
       alert("Document written with ID: ", property.id);
     }catch(error){
@@ -188,11 +222,11 @@ const AddListing = () => {
                   <div className="row">
                     <div className="col-lg-4">
                       <div className="form_group file-input-one">
-                        <input type="file" name="Image" />
+                        <input type="file" name="Image" onChange={e => uploadImages(e.target.files[0])}/>
                         <div className="upload-content">
                           <div className="upload-title-icon d-flex align-items-center justify-content-center">
                             <img
-                              src="assets/images/elements/input-1.png"
+                              src={images[0]}
                               alt="Image"
                             />
                           </div>
@@ -201,11 +235,11 @@ const AddListing = () => {
                     </div>
                     <div className="col-lg-4">
                       <div className="form_group file-input-one">
-                        <input type="file" name="Image" />
+                        <input type="file" name="Image" onChange={e => uploadImages(e.target.files[0])}/>
                         <div className="upload-content">
                           <div className="upload-title-icon d-flex align-items-center justify-content-center">
                             <img
-                              src="assets/images/elements/input-1.png"
+                              src={images[1]}
                               alt="Image"
                             />
                           </div>
@@ -214,11 +248,11 @@ const AddListing = () => {
                     </div>
                     <div className="col-lg-4">
                       <div className="form_group file-input-one">
-                        <input type="file" name="Image" />
+                        <input type="file" name="Image" onChange={e => uploadImages(e.target.files[0])}/>
                         <div className="upload-content">
                           <div className="upload-title-icon d-flex align-items-center justify-content-center">
                             <img
-                              src="assets/images/elements/input-1.png"
+                              src={images[2]}
                               alt="Image"
                             />
                           </div>
