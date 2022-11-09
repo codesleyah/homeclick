@@ -14,6 +14,9 @@ const ListingDetails2 = () => {
   const location = router.query.location;
   const rent = router.query.rent;
   const description = router.query.description;
+  const image1 = router.query.image1;
+  const image2 = router.query.image2;
+  const image3 = router.query.image3;
 
   return (
     <Layout>
@@ -53,7 +56,7 @@ const ListingDetails2 = () => {
                 </div>
                 <div className="listing-thumbnail mb-30 wow fadeInUp">
                   <img
-                    src="assets/images/listing/listing-single-1.jpg"
+                    src={image1}
                     alt="listing image"
                   />
                 </div>
@@ -63,31 +66,31 @@ const ListingDetails2 = () => {
                   <Slider {...GallerySlider2} className="gallery-slider-one">
                     <div className="gallery-item">
                       <img
-                        src="assets/images/listing/gallery-5.jpg"
+                        src={image1}
                         alt="gallery image"
                       />
                     </div>
                     <div className="gallery-item">
                       <img
-                        src="assets/images/listing/gallery-6.jpg"
+                        src={image2}
                         alt="gallery image"
                       />
                     </div>
                     <div className="gallery-item">
                       <img
-                        src="assets/images/listing/gallery-7.jpg"
+                        src={image3}
                         alt="gallery image"
                       />
                     </div>
                     <div className="gallery-item">
                       <img
-                        src="assets/images/listing/gallery-8.jpg"
+                        src={image1}
                         alt="gallery image"
                       />
                     </div>
                     <div className="gallery-item">
                       <img
-                        src="assets/images/listing/gallery-6.jpg"
+                        src={image3}
                         alt="gallery image"
                       />
                     </div>

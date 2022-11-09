@@ -90,6 +90,9 @@ const ListingGrid = () => {
                                         location:listing.towncity+","+listing.location,
                                         rent:listing.rent,
                                         description:listing.description,
+                                        image1:listing.images[0],
+                                        image2:listing.images[1],
+                                        image3:listing.images[2],
 
                                         }}}>
                             <a>{listing.title}</a>
