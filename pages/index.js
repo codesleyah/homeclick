@@ -106,7 +106,7 @@ const Index = () => {
               >
                 <div className="listing-thumbnail">
                   <img
-                    src="assets/images/listing/listing-grid-4.jpg"
+                    src={listing.images[0]}
                     alt="Listing Image"
                   />
                   <span className="featured-btn">Latest</span>

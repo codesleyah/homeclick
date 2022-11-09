@@ -46,11 +46,10 @@ const ListingGrid = () => {
                           <option disabled selected="Default Sorting">
                             Default Sorting
                           </option>
-                          <option value={1}>Museums</option>
-                          <option value={2}>Restaurant</option>
-                          <option value={3}>Party Center</option>
-                          <option value={4}>Fitness Zone</option>
-                          <option value={5}>Game Field</option>
+                          <option value={1}>Cheapest</option>
+                          <option value={2}>Near me</option>
+                          <option value={3}>Recently Added</option>
+                          <option value={4}>Most popular</option>
                         </select>
                       </div>
                     </div>
@@ -59,18 +58,9 @@ const ListingGrid = () => {
                     <div className="filter-right">
                       <ul className="filter-nav">
                         <li>
-                          <Link href="/listing-grid">
-                            <a className="active">
-                              <i className="ti-view-grid" />
-                            </a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/listing-list">
-                            <a>
-                              <i className="ti-view-list-alt" />
-                            </a>
-                          </Link>
+                          <a className="active">
+                            <i className="ti-view-grid" />
+                          </a>
                         </li>
                       </ul>
                     </div>
@@ -88,7 +78,7 @@ const ListingGrid = () => {
                     >
                       <div className="listing-thumbnail">
                         <img
-                          src="assets/images/listing/listing-grid-4.jpg"
+                          src={listing.images[0]}
                           alt="Listing Image"
                         />
                       </div>

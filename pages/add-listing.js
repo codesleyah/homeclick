@@ -5,9 +5,12 @@ import { collection, addDoc, } from "firebase/firestore"
 import { fireStore , storage} from "../src/firebase"
 import { async } from "@firebase/util";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+import { useRouter } from "next/router";
 
 
 const AddListing = () => {
+
+  const router = useRouter()
   
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -53,7 +56,6 @@ const AddListing = () => {
   }
 
   const handleSubmit = () => {
-    e.preventDefault()
     try{
       const property =  addDoc(collection(fireStore, "properties"), {
         title: title,
@@ -68,7 +70,9 @@ const AddListing = () => {
         ownersurname: ownersurname,
         images: images
       })
-      alert("Document written with ID: ", property.id);
+      alert("Your Listing has been submitted and will be available on the platform once it has been approved");
+      router.push("/")
+
     }catch(error){
       alert("Error adding document: ", error);
       console.log(error)
