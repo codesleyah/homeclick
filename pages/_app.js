@@ -14,12 +14,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Fragment>
       <Head>
-        <title>Fioxen - Directory & Listings React NextJs Template</title>
-        <link
-          rel="shortcut icon"
-          href="assets/images/favicon.ico"
-          type="image/png"
-        />
+        <title>Homeclicq</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&family=Quicksand:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"

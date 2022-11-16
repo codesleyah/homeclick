@@ -51,18 +51,18 @@ const Header2 = () => {
                   <ul className="d-flex align-items-center">
                     <li className="hero-nav-btn">
                       <Link href="/add-listing">
-                        <a className="main-btn">
-                          <i className="flaticon-avatar"></i> &nbsp;
+                        <a className="main-btn icon-btn">
                           Add Listing
                         </a>
                       </Link>
                     </li>
-                    <li className="nav-toggle-btn">
-                      <div className="navbar-toggler">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
+                    <li className="hero-nav-btn">
+                      <Link href="#">
+                        <a className="main-btn ">
+                          My Account
+                          <i className="flaticon-avatar"></i> &nbsp;
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
