@@ -9,7 +9,7 @@ import { fireStore } from "../src/firebase"
 
 const ListingGrid = () => {
 
-  const [listings, setListings] = useState([])
+  const [listings, setListings] = useState(null)
 
   const querySnapshot =  getDocs(collection(fireStore, "properties"))
 
@@ -24,8 +24,10 @@ const ListingGrid = () => {
   }
 
   useEffect(() => {
+    if(!listings) {
       getListings()
-  },[])
+    }
+  },[listings])
 
   return (
     <Layout>
@@ -70,31 +72,30 @@ const ListingGrid = () => {
 
               <div className="listing-grid-wrapper">
                 <div className="row">
-                {listings.map((listing, i) => (  
+                {listings? listings.map((listing, i) => (  
                   <div className="col-md-4 col-sm-12" key={i}>
                     <div
                       className="listing-item listing-grid-one mb-45 wow fadeInUp"
-                     
                     >
                       <div className="listing-thumbnail">
                         <img
-                          src={listing.images[0]}
+                          src={listing.images? listing.images[0] : ""}
                           alt="Listing Image"
                         />
+                        <span className="featured-btn">Latest</span>
                       </div>
                       <div className="listing-content">
                         <h3 className="title">
-                          <Link href={{pathname:"/listing-details-2",
-                                      query:{
-                                        title:listing.title,
-                                        location:listing.towncity+","+listing.location,
-                                        rent:listing.rent,
-                                        description:listing.description,
-                                        image1:listing.images[0],
-                                        image2:listing.images[1],
-                                        image3:listing.images[2],
-
-                                        }}}>
+                          <Link  href={{pathname:"/listing-details-2",
+                                            query:{
+                                              title:listing.title,
+                                              location:listing.towncity+","+listing.location,
+                                              rent:listing.rent,
+                                              description:listing.description,
+                                              image1:listing.images? listing.images[0] : "",
+                                              image2:listing.images? listing.images[1] : "",
+                                              image3:listing.images? listing.images[2]  : "",
+                                              }}}>
                             <a>{listing.title}</a>
                           </Link>
                         </h3>
@@ -112,26 +113,26 @@ const ListingGrid = () => {
                           <ul>
                             <li></li>
                             <li>
-                            <Link  href={{pathname:"/listing-details-2",
-                                      query:{
-                                        title:listing.title,
-                                        location:listing.towncity+","+listing.location,
-                                        rent:listing.rent,
-                                        description:listing.description,
-                                        
-                                        }}}>
-                              <span>
-                                <i className="ti-eye"></i>
-                                <a href="#">View</a>
-                              </span>
-                            </Link>
+                              <Link  href={{pathname:"/listing-details-2",
+                                            query:{
+                                              title:listing.title,
+                                              location:listing.towncity+","+listing.location,
+                                              rent:listing.rent,
+                                              description:listing.description,
+                                              
+                                              }}}>
+                                <span>
+                                  <i className="ti-eye"></i>
+                                  <a href="#">View</a>
+                                </span>
+                              </Link>
                             </li>
                           </ul>
                         </div>
                       </div>
                     </div>
                   </div>
-                  ))}
+                  )):null}
                 </div>
               </div>
             </div>

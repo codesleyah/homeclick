@@ -59,7 +59,7 @@ const Footer = () => {
                   className="widget categories-widget mb-40 wow fadeInUp"
                   data-wow-delay="30ms"
                 >
-                  <h4 className="widget-title">Usefull Links</h4>
+                  <h4 className="widget-title">Useful Links</h4>
                   <ul className="categories-link">
                     <li>
                       <a href="#">Terms and Conditions</a>
@@ -78,7 +78,7 @@ const Footer = () => {
                   className="widget newsletter-widget mb-40 wow fadeInUp"
                   data-wow-delay="40ms"
                 >
-                  <h4 className="widget-title">Conact us</h4>
+                  <h4 className="widget-title">Contact us</h4>
                   <p>
                     +263 778 896 938
                   </p>

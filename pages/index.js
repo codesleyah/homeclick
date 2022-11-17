@@ -105,8 +105,8 @@ const Index = () => {
                 className="listing-item listing-grid-one mb-45 wow fadeInUp"
               >
                 <div className="listing-thumbnail">
-                  <img
-                    src={listing.images[0]}
+                <img
+                    src={listing.images? listing.images[0] : ""}
                     alt="Listing Image"
                   />
                   <span className="featured-btn">Latest</span>
@@ -119,9 +119,9 @@ const Index = () => {
                                         location:listing.towncity+","+listing.location,
                                         rent:listing.rent,
                                         description:listing.description,
-                                        image1:listing.images[0],
-                                        image2:listing.images[1],
-                                        image3:listing.images[2],
+                                        image1:listing.images? listing.images[0] : "",
+                                        image2:listing.images? listing.images[1] : "",
+                                        image3:listing.images? listing.images[2]  : "",
                                         }}}>
                       <a>{listing.title}</a>
                     </Link>
