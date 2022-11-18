@@ -17,6 +17,7 @@ const ListingDetails2 = () => {
   const image1 = router.query.image1;
   const image2 = router.query.image2;
   const image3 = router.query.image3;
+  const id = router.query.id;
 
   return (
     <Layout>
@@ -105,7 +106,7 @@ const ListingDetails2 = () => {
                </div>
             </div>
 
-            <ListingDetailsRight location={location} rent={rent}/>
+            <ListingDetailsRight location={location} rent={rent} propertyId={id}/>
           </div>
         </div>
       </section>

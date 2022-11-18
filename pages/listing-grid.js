@@ -10,17 +10,21 @@ import { fireStore } from "../src/firebase"
 const ListingGrid = () => {
 
   const [listings, setListings] = useState(null)
+  const [propertyIds, setPropertyIds] = useState(null)
 
   const querySnapshot =  getDocs(collection(fireStore, "properties"))
 
   const getListings = async () => {
     const data = []
+    const ids = []
     await querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         data.push(doc.data())
+        ids.push(doc.id)
         console.log(data)
       })})
     setListings(data)
+    setPropertyIds(ids)
   }
 
   useEffect(() => {
@@ -31,7 +35,13 @@ const ListingGrid = () => {
 
   return (
     <Layout>
-      <PageBanner title={"Listing Grid"} pageName={"Listing"} />
+      {/*====== Start breadcrumbs Section ======*/}
+      <section
+        className="page-breadcrumbs page-breadcrumbs-two bg_cover"
+        style={{
+          backgroundImage: "url(assets/images/hero/rr.png)",
+        }}
+      />
       <section className="listing-grid-area pt-120 pb-90">
         <div className="container">
           <div className="row">
@@ -88,6 +98,7 @@ const ListingGrid = () => {
                         <h3 className="title">
                           <Link  href={{pathname:"/listing-details-2",
                                             query:{
+                                              id: propertyIds? propertyIds[i] : "",
                                               title:listing.title,
                                               location:listing.towncity+","+listing.location,
                                               rent:listing.rent,
@@ -115,11 +126,14 @@ const ListingGrid = () => {
                             <li>
                               <Link  href={{pathname:"/listing-details-2",
                                             query:{
+                                              id: propertyIds? propertyIds[i] : "",
                                               title:listing.title,
                                               location:listing.towncity+","+listing.location,
                                               rent:listing.rent,
                                               description:listing.description,
-                                              
+                                              image1:listing.images? listing.images[0] : "",
+                                              image2:listing.images? listing.images[1] : "",
+                                              image3:listing.images? listing.images[2]  : "",
                                               }}}>
                                 <span>
                                   <i className="ti-eye"></i>

@@ -82,7 +82,12 @@ const AddListing = () => {
 
   return (
     <Layout>
-      <PageBanner title={"Add Listing"} pageName={"Listing"} />
+        <section
+        className="page-breadcrumbs page-breadcrumbs-two bg_cover"
+        style={{
+          backgroundImage: "url(assets/images/hero/rr.png)",
+        }}
+      />
       <section className="fioxen-add-listing pt-120 pb-120">
         <div className="container">
           <form onSubmit={(e) => e.preventDefault()}>
@@ -278,7 +283,7 @@ const AddListing = () => {
                             name="checkbox"
                             defaultChecked=""
                           />
-                          <label htmlFor="check1">
+                          <label htmlFor="whatsapp">
                             <span>whatsapp</span>
                           </label>
                         </div>
@@ -288,22 +293,24 @@ const AddListing = () => {
                       <div className="form_group">
                         <div className="single-checkbox d-flex">
                           <input type="checkbox" id="calls" name="checkbox" />
-                          <label htmlFor="check4">
+                          <label htmlFor="calls">
                             <span>voice calls</span>
                           </label>
                         </div>
                       </div>
                     </div>
+
                     <div className="col-lg-4">
                       <div className="form_group">
                         <div className="single-checkbox d-flex">
-                          <input type="checkbox" id="check7" name="checkbox" />
-                          <label htmlFor="check7">
+                          <input type="checkbox" id="sms" name="checkbox" />
+                          <label htmlFor="sms">
                             <span>SMS</span>
                           </label>
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
 

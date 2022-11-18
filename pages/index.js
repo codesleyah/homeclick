@@ -8,16 +8,20 @@ const Index = () => {
 
 
   const [listings, setListings] = useState([])
+  const [propertyIds, setPropertyIds] = useState([])
   const querySnapshot =  getDocs(collection(fireStore, "properties"))
 
   const getListings = async () => {
     const data = []
+    const ids = []
     await querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         data.push(doc.data())
+        ids.push(doc.id)
         console.log(data)
       })})
     setListings(data)
+    setPropertyIds(ids)
   }
 
   useEffect(() => {
@@ -115,6 +119,7 @@ const Index = () => {
                   <h3 className="title">
                     <Link  href={{pathname:"/listing-details-2",
                                       query:{
+                                        id:propertyIds? propertyIds[i] : "",
                                         title:listing.title,
                                         location:listing.towncity+","+listing.location,
                                         rent:listing.rent,
@@ -142,11 +147,14 @@ const Index = () => {
                       <li>
                         <Link  href={{pathname:"/listing-details-2",
                                       query:{
+                                        id:propertyIds? propertyIds[i] : "",
                                         title:listing.title,
                                         location:listing.towncity+","+listing.location,
                                         rent:listing.rent,
                                         description:listing.description,
-                                        
+                                        image1:listing.images? listing.images[0] : "",
+                                        image2:listing.images? listing.images[1] : "",
+                                        image3:listing.images? listing.images[2]  : "",
                                         }}}>
                           <span>
                             <i className="ti-eye"></i>

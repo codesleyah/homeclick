@@ -1,6 +1,8 @@
+import { query } from "firebase/firestore";
+import Link from "next/link";
 import React from "react";
 
-const ListingDetailsRight = ({location, rent}) => {
+const ListingDetailsRight = ({location, rent, propertyId,}) => {
   return (
     <div className="col-lg-4">
       
@@ -20,7 +22,9 @@ const ListingDetailsRight = ({location, rent}) => {
                 </p>
               </div>
               <ul className="social-link">
-                <button className="main-btn icon-btn">Apply Now</button>
+                <Link href={{pathname:"/apply",query:{id:propertyId}}}>
+                  <button className="main-btn icon-btn">Apply Now</button>
+                </Link>
               </ul>
             </div>
           </div>
